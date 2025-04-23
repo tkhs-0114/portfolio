@@ -16,7 +16,7 @@ export default function Back_Ground() {
 
         let Vs = [];
         let Fs = [];
-        const objData = ["", "/monkey.obj"];
+        const objData = ["", "/portfolio/monkey.obj"];
         const init = async() => {
             for (const obj of objData) {
                 const objData = await loadObjFile(obj);
