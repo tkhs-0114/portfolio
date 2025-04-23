@@ -8,8 +8,8 @@ function App() {
         tkhs-0114 's Portfolio
       </div>
       <div style={{ height: '70vh' }}></div>
-      <div className="animate-bounce margin-auto text-center">
-        sita
+      <div className="animate-bounce margin-auto text-center text-4xl font-bold">
+        ↓↓↓
       </div>
       <div className="h-screen"></div>
       <div className="w-full bg-gray-400 bg-opacity-90 text-4xl font-bold text-center">
@@ -20,7 +20,7 @@ function App() {
         title="入退室管理アプリ"
         team={true}
         stack={["flask", "selenium"]}
-        description="部室の入退室を検知できるシステムあああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ" />
+        description="部室の入退室を検知できるシステムああaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaあああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ" />
       <Block
         title="KC3登壇"
         stack={["docker"]}

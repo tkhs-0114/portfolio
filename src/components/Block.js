@@ -4,13 +4,18 @@ export default function Block(props) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <div className="bg-black bg-opacity-80 text-gray-100 rounded-xl border-2 border-gray-100 text-center m-4 p-4">
+        <div
+            className="bg-black bg-opacity-80 text-gray-100 rounded-xl border-2 border-gray-100 text-center m-4 p-4"
+            onClick={() => setIsExpanded(!isExpanded)}
+            style={{
+                cursor: "pointer"
+            }}>
             <div className="text-right">
                 <div className={`inline-block rounded-lg ${props.team ? "bg-blue-800" : "bg-red-800"}`}>
                     {props.team ? "チーム" : "個人"}
                 </div>
             </div>
-            <span>{props.title}</span>
+            <span className="text-xl">{props.title}</span>
 
             <hr />
             <div className="text-left">
@@ -25,15 +30,14 @@ export default function Block(props) {
                 })}
             </div>
             <span
-                className={`block mt-4 text-sm text-gray-300 overflow-hidden`}
+                className={`block mt-1 text-sm text-gray-300 overflow-hidden`}
                 style={{
-                    maxWidth: "200px",
-                    maxHeight: isExpanded ? "500px" : "50px",
+                    maxWidth: isExpanded ? "80vw" : "200px",
                     opacity: isExpanded ? 1 : 0.7,
-                    cursor: "pointer",
-                    transition: "max-height 0.3s ease, opacity 0.3s ease"
+                    transition: "max-width 0.3s ease, opacity 0.3s ease",
+                    textOverflow: "ellipsis",
+                    whiteSpace: isExpanded ? "normal" : "nowrap",
                 }}
-                onClick={() => setIsExpanded(!isExpanded)}
             >
                 {props.description}
             </span>
