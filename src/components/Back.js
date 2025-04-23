@@ -16,44 +16,53 @@ export default function Back_Ground() {
 
         let Vs = [];
         let Fs = [];
-        const objData = ["", "/portfolio/monkey.obj"];
         const init = async() => {
-            for (const obj of objData) {
-                const objData = await loadObjFile(obj);
+            for (let i=1; i<=23; i++) {
+                const objData = await loadObjFile(`/portfolio/object/飛行船${String(i).padStart(4, '0')}.obj`);
                 Vs.push(objData.V);
                 Fs.push(objData.F);
-                console.log(Vs, Fs);
             }
-            const Matrixs = [
-                makeMatrix(//Camera
-                    {x: 0, y: 0, z: 5},
-                    {x: 0, y: 0, z: 0}, 1
-                ),
-                makeMatrix(//Monkey
-                    {x: 0, y: 0, z: 0},
-                    {x: 0, y: 0, z: 0}, 1
-                )
-
-            ];
-            update(Matrixs);
+            console.log(`長さ${Vs.length}`);
         }
         init();
 
-        const update = (Matrixs) => {
+        const Matrixs = [
+            makeMatrix(//Camera
+                {x: 0, y: -0.5, z: 5},
+                {x: 0.1, y: 0, z: 0}, 1
+            ),
+            makeMatrix(//Monkey
+                {x: 0, y: 0, z: 0},
+                {x: 0, y: 0, z: 0}, 1
+            ),
+        ];
+
+        let y = 0;
+        let a = 0;
+        const loop = setInterval(() => {
+            if(Vs.length !== 23) return;
+            a += 1;
+            Matrixs[1] = makeMatrix(
+                {x: 0, y: Math.sin(a*0.01)*0.1, z: 0},
+                {x: 0, y: y+-0.5, z: 0}, 1
+            );
+            update(Matrixs, a%23);
+        });
+
+        const update = (Matrixs, frame) => {
             clearCanvas(ctx);
-            for(let vi=1; vi<Vs.length; vi++){
-                for(let f of Fs[vi]){
-                    for(let i=0; i<f.length; i++){
-                        const j = (i+1) % f.length;
+            for(let f of Fs[frame]){
+                for(let i=0; i<f.length; i++){
+                    const j = (i+1) % f.length;
 
-                        const v1 = mult1x4(mult1x4(Vs[vi][f[i]], Matrixs[vi]), inverse4x4(Matrixs[0]));
-                        const v2 = mult1x4(mult1x4(Vs[vi][f[j]], Matrixs[vi]), inverse4x4(Matrixs[0]));
+                    const v1 = mult1x4(mult1x4(Vs[frame][f[i]], Matrixs[1]), inverse4x4(Matrixs[0]));
+                    const v2 = mult1x4(mult1x4(Vs[frame][f[j]], Matrixs[1]), inverse4x4(Matrixs[0]));
 
-                        drawLine(ctx, view(v1).x, view(v1).y, view(v2).x, view(v2).y);
-                    }
+                    drawLine(ctx, view(v1).x, view(v1).y, view(v2).x, view(v2).y);
                 }
             }
         }
+        return () => clearInterval(loop);
     })
 
     return (
@@ -67,7 +76,6 @@ function clearCanvas(ctx){
     ctx.rect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillStyle = "#101010";
     ctx.fill();
-    console.log(ctx.canvas.width, ctx.canvas.height);
 }
 function drawLine(ctx, x1, y1, x2, y2) {
     ctx.beginPath();
@@ -225,7 +233,7 @@ function makeMatrix(p, r, s) {
 function view(v){
     // return {x: v.x, y:v.y};
     if (v.z >= 0){
-        return {x: v.x * 10, y:v.y * 10};
+        return {x: v.x * 1000, y:v.y * 1000};
     }
     return {x: v.x * (1 / v.z * -10), y:v.y * (1 / v.z * -10)};
 }
