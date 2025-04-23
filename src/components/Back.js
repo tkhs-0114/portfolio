@@ -11,8 +11,13 @@ export default function Back_Ground() {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
 
-        canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        const resizeCanvas = () => {
+            console.log("resizeCanvas");
+            canvas.width = window.innerWidth;
+        };
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
         let Vs = [];
         let Fs = [];
@@ -38,10 +43,17 @@ export default function Back_Ground() {
         ];
 
         let y = 0;
+        let scrollY = 0;
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY * 0.005;
+        });
         let a = 0;
         const loop = setInterval(() => {
             if(Vs.length !== 23) return;
             a += 1;
+            if(scrollY != y){
+                y += (scrollY - y) * 0.02;
+            }
             Matrixs[1] = makeMatrix(
                 {x: 0, y: Math.sin(a*0.01)*0.1, z: 0},
                 {x: 0, y: y+-0.5, z: 0}, 1
@@ -62,7 +74,11 @@ export default function Back_Ground() {
                 }
             }
         }
-        return () => clearInterval(loop);
+        return () => {
+            clearInterval(loop);
+            window.removeEventListener('scroll', () => {});
+            window.removeEventListener('resize', resizeCanvas);
+        };
     })
 
     return (
