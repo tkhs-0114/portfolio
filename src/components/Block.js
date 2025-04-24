@@ -41,7 +41,7 @@ export default function Block(props) {
                     return (
                         <img
                             key={s}
-                            className="aspect-square w-10 inline-block bg-gray-500 bg-opacity-50 rounded-full p-2 my-2"
+                            className={`aspect-square w-10 inline-block bg-gray-500 bg rounded-full p-2 my-2 ${isExpanded ? "opacity-90" : "opacity-50"}`}
                             src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${s}/${s}-original.svg`}
                         ></img>
                     )

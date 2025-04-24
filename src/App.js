@@ -9,8 +9,12 @@ function App() {
         <Space height='70vh'/>
         <div className="animate-bounce">↓↓↓</div>
       </div>
-      <Space height='70vh'/>
-      <div id="works" className="w-full bg-gray-400 bg-opacity-90 text-4xl font-bold text-center">
+      <Space height='110vh'/>
+      <div id="about" className="w-full bg-black bg-opacity-60 text-4xl font-bold text-center border">
+        About Me
+      </div>
+      <Space height='30vh'/>
+      <div id="works" className="w-full bg-black bg-opacity-60 text-4xl font-bold text-center border">
         Works
       </div>
       <div className="flex flex-wrap justify-center items-center m-20">
