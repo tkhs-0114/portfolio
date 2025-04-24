@@ -1,35 +1,30 @@
-import Block from "./components/Block";
+import Works from "./Works";
 
 function App() {
   return (
     <div className="z-10 relative text-gray-50">
-      <div style={{ height: '10vh' }}></div>
-      <div className="text-center text-4xl font-bold">
+      <Space height='10vh'/>
+      <div id="title" className="text-center text-4xl font-bold">
         tkhs-0114 's Portfolio
+        <Space height='70vh'/>
+        <div className="animate-bounce">↓↓↓</div>
       </div>
-      <div style={{ height: '70vh' }}></div>
-      <div className="animate-bounce margin-auto text-center text-4xl font-bold">
-        ↓↓↓
-      </div>
-      <div className="h-screen"></div>
-      <div className="w-full bg-gray-400 bg-opacity-90 text-4xl font-bold text-center">
+      <Space height='70vh'/>
+      <div id="works" className="w-full bg-gray-400 bg-opacity-90 text-4xl font-bold text-center">
         Works
       </div>
-      <div className="flex flex-wrap justify-center items-center">
-      <Block
-        title="入退室管理アプリ"
-        team={true}
-        stack={["flask", "selenium"]}
-        description="部室の入退室を検知できるシステムああaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaあああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ" />
-      <Block
-        title="KC3登壇"
-        stack={["docker"]}
-        description="「１からはじめるDocker入門」を開催" />
-        <Block title="砂時計" stack={["arduino"]} description="M5Stickで加速度センサを用いた砂時計" />
+      <div className="flex flex-wrap justify-center items-center m-20">
+        <Works />
       </div>
-      <div className="h-screen"></div>
+      <Space height='70vh'/>
     </div>
   );
 }
 
 export default App;
+
+function Space(props) {
+  return (
+    <div style={{ height: props.height}}></div>
+  )
+}
