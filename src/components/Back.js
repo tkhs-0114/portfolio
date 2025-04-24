@@ -59,7 +59,7 @@ export default function Back_Ground() {
                 {x: 0, y: y+-0.5, z: 0}, 1
             );
             update(Matrixs, a%23);
-        });
+        }, 1000/30);
 
         const update = (Matrixs, frame) => {
             clearCanvas(ctx);
