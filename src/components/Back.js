@@ -83,12 +83,11 @@ export default function Back_Ground() {
             }
         }
         return () => {
-            {
             clearInterval(loop);
             window.removeEventListener('scroll', () => {});
             window.removeEventListener('resize', resizeCanvas);
         };
-    })
+    }, []);
 
     return (
         <div 
