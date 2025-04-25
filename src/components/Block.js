@@ -4,7 +4,7 @@ export default function Block(props) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     const Text = (text) => {
-        const parts = text.split(/(<br>|\*\*.*?\*\*)/g);
+        const parts = text.split(/(<br>|\*\*.*?\*\*|\[.*?\]\(.*?\))/g);
         return parts.map((part, index) => {
             if (part?.startsWith("**") && part.endsWith("**")) {
                 return (
@@ -15,6 +15,17 @@ export default function Block(props) {
             }
             if (part === "<br>") {
                 return <br key={index} />;
+            }
+            if (part?.startsWith("[") && part.includes("](") && part.endsWith(")")) {
+                const match = part.match(/\[(.*?)\]\((.*?)\)/);
+                if (match) {
+                    const [, text, url] = match;
+                    return (
+                        <a key={index} href={url} className="text-blue-400 underline" target="_blank" rel="noopener noreferrer">
+                            {text}
+                        </a>
+                    );
+                }
             }
             return part;
         });
@@ -53,7 +64,7 @@ export default function Block(props) {
                     paddingLeft: isExpanded ? "20px" : "0px",
                     width: isExpanded ? "50vw" : "200px",
                     opacity: isExpanded ? 1 : 0.7,
-                    transition: "width 0.3s ease, opacity 0.3s ease",
+                    transition: "width 0.7s ease, opacity 0.3s ease",
                     textOverflow: "ellipsis",
                     whiteSpace: isExpanded ? "normal" : "nowrap",
                 }}
