@@ -19,16 +19,24 @@ export default function Back_Ground() {
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        let Vs = [];
-        let Fs = [];
-        const init = async() => {
-            for (let i=1; i<=23; i++) {
-                const objData = await loadObjFile(`/portfolio/object/飛行船${String(i).padStart(4, '0')}.obj`);
-                Vs.push(objData.V);
-                Fs.push(objData.F);
+        let Vs = new Array(23).fill({});
+        let Fs = new Array(23).fill({});
+        let load_count = 0;
+        // 並列に読み込む処理を実装する
+        const init = async () => {
+            const promises = [];
+            for (let i = 1; i <= 23; i++) {
+            const promise = loadObjFile(`/portfolio/object/飛行船${String(i).padStart(4, '0')}.obj`)
+                .then(objData => {
+                Vs[i] = objData.V;
+                Fs[i] = objData.F;
+                });
+            promises.push(promise);
             }
-            console.log(`長さ${Vs.length}`);
-        }
+            await Promise.all(promises);
+            console.log(Vs);
+            load_count = 23;
+        };
         init();
 
         const Matrixs = [
@@ -49,7 +57,7 @@ export default function Back_Ground() {
         });
         let a = 0;
         const loop = setInterval(() => {
-            if(Vs.length !== 23) return;
+            if(load_count !== 23) return;
             a += 1;
             if(scrollY != y){
                 y += (scrollY - y) * 0.02;
@@ -58,8 +66,8 @@ export default function Back_Ground() {
                 {x: 0, y: Math.sin(a*0.01)*0.1, z: 0},
                 {x: 0, y: y+-0.5, z: 0}, 1
             );
-            update(Matrixs, a%23);
-        });
+            update(Matrixs, a%23+1);
+        }, 1000/30);
 
         const update = (Matrixs, frame) => {
             clearCanvas(ctx);
@@ -82,7 +90,11 @@ export default function Back_Ground() {
     })
 
     return (
-        <div className="fixed z-0">
+        <div 
+            className="fixed z-0 w-full h-screen top-0 left-0 overflow-hidden"
+            style={{
+                backgroundColor: "#101010",
+            }}>
             <canvas ref={canvasRef}></canvas>
         </div>
     );
