@@ -16,7 +16,7 @@ function App() {
       <div className="mt-5 mx-auto p-5 max-w-lg bg-black bg-opacity-80 rounded-xl border-gray-100 text-center text-lg">
         <div className="text-2xl">tkhs-0114</div>
         <div>
-          　私は情報系大学の3年生です。Webアプリ や 競技プログラミング ,3DCGなど様々な分野に興味があり、日々学習しています。
+          私は情報系大学の3年生です。Webアプリ や 競技プログラミング ,3DCGなど様々な分野に興味があり、日々学習しています。
           ランダムなチームで行う ハッカソン が好きなので、長期休業の時期は参加しています。
           プログラムは自分で考えて書く事も，先人が生み出した偉大なアルゴリズムを知る事もどちらも好きです。
         </div>
@@ -25,11 +25,12 @@ function App() {
             <li>- 第二級 陸上特殊無線技士</li>
             <li>- 工事担任者 第二級デジタル通信</li>
             <li>- 危険物取扱者 乙種4類</li>
-            <li>- 普通自動車第一種免許(MT)</li>
+            <li>- 普通自動車第一種免許（眼鏡等）</li>
           </ul>
         </div>
       </div>
       <div className="mt-5 pb-10 mx-auto p-2 max-w-2xl bg-black bg-opacity-80 rounded-xl border-gray-100 text-center text-lg">
+        <div className="text-2xl">Skills</div>
         <Icon src="javascript" /><Icon src="python" /><Icon src="typescript" />
         <Icon src="react" /><Icon src="nextjs" /><Icon src="git" />
         <Icon src="docker" /><Icon src="c" /><Icon src="fastapi" />

@@ -12,7 +12,7 @@ export default function Works() {
         [GitHub：リポジトリ](https://github.com/tkhs-0114/portfolio)<br>
         " />
 <Block
-    title="KC3-Hack"
+    title="KC3-Hack 2025"
     team={true}
     stack={["nextjs", "oauth", "mysql", "docker"]}
     description="
@@ -25,23 +25,30 @@ export default function Works() {
 <Block
     title="VScode拡張機能"
     stack={["nodejs", "electron", "typescript"]}
+    pickup={true}
     description="
         VScodeのサイドバーにアニメーションを持たせる**拡張機能**を作成した。<br>
-        通常の作成方法ではVScodeのUIまで干渉できない為、**electron**で作成されたVScodeに自作の設定ファイルを追記する拡張機能を作成し、内部からアニメーションを適用した。<br>
-        [VScode Marketplace](https://marketplace.visualstudio.com/items?itemName=tkhs-0114.vscode-animation)<br>
+        VScodeのデフォルトの動作では、全ての操作にアニメーションがないので少し寂しい。<br>
+        公式から提供されている作成方法ではVScodeの**UI**まで**干渉できない**、そこでVScodeが**electron**で作成されている事を利用し、VScodeを**構成するファイル**に**自作の設定ファイルを追記**する事で内部からアニメーションを適用している。<br>
+        [VScode Marketplace](https://marketplace.visualstudio.com/items?itemName=tkhs-0114.sidebar-animation)<br>
         [GitHub：リポジトリ](https://github.com/tkhs-0114/vscode-sidebar-animation)<br>
+        {/portfolio/images/sidebar-animation.gif}
         " />
+        
 <Block
     title="RunCat-CUI"
     stack={["python", "unix", "vim", "rust"]}
+    pickup={true}
     description="
-        ターミナル上を猫が走る**CUIアプリ**を作成した。<br>
-        Rustで実装する予定だったが、LT大会で使用する予定だったので断念し、Pythonで実装した。<br>
+        CPU使用率が猫の走る速度でわかるRunCatの**CUI**版を作成した。<br>
+        画面下部でCPU使用率にあわせて猫が走るアニメーションが再生される。<br>
+        Rustで実装していたが、LT大会で使用する予定だったのでスケジュール的に断念し、Pythonで実装した。<br>
         画面下部で猫を走らせながら、上部でターミナルを操作するため、**並列処理**を使用したり、**疑似端末**を使用したり等、Unix周りの知識も必要になった。<br>
-        CUI上に画像を表示する処理は点字を使用し、6倍の密度でドットを表示することが可能である。<br>
+        CUI上にドット画像を表示する処理は**点字**を使用し、通常の6倍の密度でドットを表示することが可能である。<br>
         LT大会では**企業賞**と**優秀賞**を頂いた。<br>
         せっかくCUIのアプリを作るので**Vim**を使用して開発した。<br>
         [GitHub：リポジトリ](https://github.com/tkhs-0114/RunCat-CUI)<br>
+        {/portfolio/images/runcat-cui.gif}
         " />
 <Block
     title="モバイルオーダー"
@@ -54,7 +61,7 @@ export default function Works() {
         [GitHub：リポジトリ](https://github.com/oithxs/mobile-order-2024)<br>
         " />
 <Block
-    title="近畿大ハッカソン"
+    title="近畿大学ハッカソン"
     team={true}
     stack={["javascript", "html5", "css3", "github"]}
     description="
@@ -69,7 +76,7 @@ export default function Works() {
     stack={["flask", "selenium", "docker", "github"]}
     description="
         部室への人の入退室を管理できる**Webアプリ**を開発した。<br>
-        WiFiの管理画面から現在アクセス中の端末リストをスクレイピングして、表示する。<br>
+        WiFiの管理画面から現在アクセス中の端末リストをスクレイピングして、入退室中のユーザをDiscordで表示する<br>
         初めてのGitを活用したチーム開発<br>
         [GitHub：リポジトリ](https://github.com/oithxs/clubroom-observer)<br>
         " />
